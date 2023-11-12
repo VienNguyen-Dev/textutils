@@ -5,6 +5,7 @@ export default function TextForm(props) {
   const handleUpClick = ()=> {
     let newText = text.toUpperCase()
     setText(newText)
+    props.showAlert("Converted to upperCase!", "success")
   }
   const handleOnChange = (event)=> {
     setText(event.target.value)
@@ -12,15 +13,18 @@ export default function TextForm(props) {
   const handleClearClick = () => {
     let newText = ''
     setText(newText)
+    props.showAlert("Text Cleared!", "success")
   }
 
   const handleLoClick = () => {
     let newText = text.toLowerCase()
     setText(newText)
+    props.showAlert("Converted to lowerCase!", "success")
   } 
 // Credit: A
   const handleCopy = () => {
       navigator.clipboard.writeText(text)
+      props.showAlert("Text copied to clipboard!", "success")
 
   }
 
@@ -28,6 +32,7 @@ export default function TextForm(props) {
   const handleExtraSpace = () => {
     let newText = text.split(/ [ ] + /)
     setText(newText.join(" "))
+    props.showAlert("Extra Space Remove!", "success")
   }
 
   //Credit: shift
