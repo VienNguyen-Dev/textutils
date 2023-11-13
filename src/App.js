@@ -1,10 +1,15 @@
 
 import './App.css';
 import Alert from './compoinents/Alert';
-// import About from './compoinents/About';
+import About from './compoinents/About';
 import Navbar from './compoinents/Navbar';
 import TextForm from './compoinents/TextForm';
 import React, {useState} from 'react';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
 
 function App() {
   // Create a function toggle mode listeral in App.js
@@ -49,14 +54,22 @@ function App() {
     <>
     {/* <Navbar title="TextUtils" aboutText="About"/> */}
     {/* <Navbar /> */}
-    <Navbar title="TextUtils" mode = {mode} toggleMode = {toggleMode}/>
-    <Alert alert={alert}/>
-    <div className="container my-3">
-     <TextForm showAlert={showAlert} heading="Enter the text to analyze bellow" mode={mode}/> 
-     {/* <About/> */}
-    </div>
-    
-    </>
+    <BrowserRouter>
+      <Navbar title="TextUtils" mode = {mode} toggleMode = {toggleMode} aboutText="About" />
+        <Alert alert={alert}/>
+        <div className="container my-3">
+          <Routes>
+            {/* /users ---> compoinent 1
+            /users/home ---? compoiments 2 */}
+              <Route exact path="/about" element={<About/>}>
+              </Route>
+              <Route exact path="/"  element={ <TextForm showAlert={showAlert} heading="Enter the text to analyze bellow" mode={mode}/>}>     
+              </Route>
+          </Routes>
+      </div>
+    </BrowserRouter>
+      
+  </>
   );
 }
 
