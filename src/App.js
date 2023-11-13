@@ -11,25 +11,29 @@ function App() {
   //use useState
   const [mode, setMode] = useState("light")//intinizalie for mode is false ("light")
   const [alert, setAlert] = useState(null)
-
-  const showAlert = (message, type) => {
-      setAlert({
-        msg: message,
-        type: type
-      })
+  const showAlert = (message, type)  =>  {
+    setAlert({
+      msg: message,
+      type: type
+    })
   }
-  const toggleMode = () => {
+    const toggleMode = () => {
     if (mode === "light") {
       setMode("dark")
       document.body.style.backgroundColor = "#042743"
-      showAlert("Dark mode have been enabled", "success")
+      showAlert("Dark have been enabled!", "success") 
       setTimeout(() => {
         setAlert(null)
       }, 2000);
+    
     } else {
       setMode("light")
       document.body.style.backgroundColor = "white"
-      showAlert("Light mode have been enabled", "success")
+      showAlert("Light havebeen enabled!", "success")
+      setTimeout(() => {
+        setAlert(null)
+      }, 2000);
+      
     }
   }
   return (
@@ -38,9 +42,9 @@ function App() {
     {/* <Navbar title="TextUtils" aboutText="About"/> */}
     {/* <Navbar /> */}
     <Navbar title="TextUtils" mode = {mode} toggleMode = {toggleMode}/>
-    <Alert alert= {alert}/>
+    <Alert alert={alert}/>
     <div className="container my-3">
-     <TextForm showAlert = {showAlert} heading="Enter the text to analyze bellow" mode={mode}/> 
+     <TextForm showAlert={showAlert} heading="Enter the text to analyze bellow" mode={mode}/> 
      {/* <About/> */}
     </div>
     
