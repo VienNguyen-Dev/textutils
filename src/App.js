@@ -22,14 +22,22 @@ function App() {
       setMode("dark")
       document.body.style.backgroundColor = "#042743"
       showAlert("Dark have been enabled!", "success") 
+      document.title = `TextUtils - Dark Mode`
       setTimeout(() => {
         setAlert(null)
       }, 2000);
+      // setInterval(() => {
+      //   document.title = `TextUtils is Amazing Mode`
+      // }, 2000);
+      // setInterval(() => {
+      //   document.title = `Install TextUtils Now`
+      // }, 1500);
     
     } else {
       setMode("light")
       document.body.style.backgroundColor = "white"
       showAlert("Light havebeen enabled!", "success")
+      document.title = `TextUtils - Light Mode`
       setTimeout(() => {
         setAlert(null)
       }, 2000);
